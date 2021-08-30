@@ -7,7 +7,7 @@ config_file = "test.cfg"
 np.set_printoptions(formatter={"float": "{: 6.2f}".format})
 
 
-# Instatiate and initialize the model.
+# Instantiate and initialize the model.
 m = HeatBMI()
 print(m.get_component_name())
 m.initialize(config_file)

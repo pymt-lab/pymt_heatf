@@ -8,7 +8,7 @@ np.set_printoptions(formatter={"float": "{: 6.2f}".format})
 
 # Instantiate the component and get its name.
 m = HeatBMI()
-print(m.get_component_name())
+print(m.name)
 
 # Call setup, then initialize the model.
 args = m.setup(".")
