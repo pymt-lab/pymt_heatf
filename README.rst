@@ -17,7 +17,11 @@ With conda
 
 1. Create a conda environment from the *environment.yml* file and activate it
 2. Build/install the `Fortran BMI example <https://github.com/csdms/bmi-example-fortran/#buildinstall>`_
-3. Build/install this project with ``make install``
+3. Build/install this project with:
+
+   .. code-block:: bash
+
+    $ make install
 
 With pip
 ........
@@ -33,7 +37,11 @@ Make, CMake, and a Fortran compiler are required.
 
     $ pip install meson-python meson ninja cython numpy bmipy
 
-5. Build/install this project with ``make install``
+5. Build/install this project with:
+
+   .. code-block:: bash
+
+    $ make install
 
 Use
 ---
