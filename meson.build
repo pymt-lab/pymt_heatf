@@ -40,7 +40,7 @@ srcs = [
 # Files get copied to <python directory>/site-packages/<subdir>
 install_pkg_srcs = [
     'pymt_heatf/__init__.py',
-    'pymt_heatf/bmi.py',
+    'pymt_heatf/_bmi.py',
 ]
 py.install_sources(
     install_pkg_srcs,

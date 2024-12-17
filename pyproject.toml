@@ -64,7 +64,7 @@ repository = "https://github.com/mdpiper/pymt_heatf"
 changelog = "https://github.com/mdpiper/pymt_heatf/blob/main/CHANGES.rst"
 
 [project.entry-points."pymt.plugins"]
-HeatModelF = "pymt_heatf.bmi:HeatModelF"
+HeatModelF = "pymt_heatf._bmi:HeatModelF"
 
 [tool.ruff]
 exclude = ["docs"]
