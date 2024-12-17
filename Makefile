@@ -64,7 +64,7 @@ pretty:
 	black . --check
 
 test: ## run tests quickly with the default Python
-	bmi-test pymt_heatf.bmi:HeatModelF \
+	bmi-test pymt_heatf._bmi:HeatModelF \
 		--config-file=${PWD}/examples/test.cfg \
 		--root-dir=examples \
 		--bmi-version="2.0" \
