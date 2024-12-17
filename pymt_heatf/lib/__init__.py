@@ -2,7 +2,6 @@
 
 from .heatmodelf import HeatModelF
 
-
 __all__ = [
     "HeatModelF",
 ]
