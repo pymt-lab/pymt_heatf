@@ -64,7 +64,11 @@ pretty:
 	black . --check
 
 test: ## run tests quickly with the default Python
-	bmi-test pymt_heatf.bmi:HeatModelF -vvv
+	bmi-test pymt_heatf.bmi:HeatModelF \
+		--config-file=${PWD}/examples/test.cfg \
+		--root-dir=examples \
+		--bmi-version="2.0" \
+		-vvv
 
 test-all: ## run tests on every Python version with tox
 	tox

@@ -45,7 +45,7 @@ jobs:
       - name: Test BMI
         run: |
           python -c 'import pymt_heatf'
-          bmi-test pymt_heatf.bmi:HeatModelF --config-file=examples/test.cfg --root-dir=examples -vvv
+          bmi-test pymt_heatf.bmi:HeatModelF --config-file=${PWD}/examples/test.cfg --root-dir=examples -vvv
 
       - name: Run examples
         working-directory: ${{ github.workspace }}/examples
