@@ -74,6 +74,10 @@ jobs:
           micromamba-version: latest
           environment-file: environment.yml
 
+      - name: Set the FC environment variable to the Fortran conda compiler
+        run: |
+          echo "FC=flang.exe" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+
       - name: Build and install HeatModelF
         run: |
           pushd ./external/bmi-example-fortran
