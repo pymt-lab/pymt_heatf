@@ -4,7 +4,6 @@ on: [push, pull_request]
 
 env:
   BUILD_DIR: _build
-  PYTHON_VERSION: 3.13
 
 jobs:
   build-test-unix:
@@ -26,17 +25,10 @@ jobs:
         with:
           submodules: true
 
-      - uses: conda-incubator/setup-miniconda@v3
+      - uses: mamba-org/setup-micromamba@v2
         with:
-          miniforge-version: latest
-          activate-environment: fbld
+          micromamba-version: latest
           environment-file: environment.yml
-          python-version: ${{ env.PYTHON_VERSION }}
-
-      - name: Show conda installation info
-        run: |
-          conda info
-          conda list
 
       - name: Build and install HeatModelF
         run: |
@@ -76,17 +68,11 @@ jobs:
           submodules: true
 
       - uses: ilammy/msvc-dev-cmd@v1
-      - uses: conda-incubator/setup-miniconda@v3
-        with:
-          miniforge-version: latest
-          activate-environment: fbld
-          environment-file: environment.yml
-          python-version: ${{ env.PYTHON_VERSION }}
 
-      - name: Show conda installation info
-        run: |
-          conda info
-          conda list
+      - uses: mamba-org/setup-micromamba@v2
+        with:
+          micromamba-version: latest
+          environment-file: environment.yml
 
       - name: Build and install HeatModelF
         run: |
