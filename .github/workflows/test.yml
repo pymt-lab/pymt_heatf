@@ -6,7 +6,7 @@ env:
   BUILD_DIR: _build
 
 jobs:
-  build-and-test:
+  build-test-unix:
     if:
       github.event_name == 'push' || github.event.pull_request.head.repo.full_name != github.repository
 
@@ -19,17 +19,22 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, macos-latest]
-        python-version: ["3.11", "3.12", "3.13"]
 
     steps:
       - uses: actions/checkout@v4
         with:
           submodules: true
 
-      - uses: mamba-org/setup-micromamba@v2
+      - uses: conda-incubator/setup-miniconda@v3
         with:
-          micromamba-version: latest
+          miniforge-version: latest
+          activate-environment: fbld
           environment-file: environment.yml
+
+      - name: Show conda installation info
+        run: |
+          conda info
+          conda list
 
       - name: Build and install HeatModelF
         run: |
