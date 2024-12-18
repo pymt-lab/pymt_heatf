@@ -4,6 +4,7 @@ on: [push, pull_request]
 
 env:
   BUILD_DIR: _build
+  PYTHON_VERSION: 3.13
 
 jobs:
   build-test-unix:
@@ -30,6 +31,7 @@ jobs:
           miniforge-version: latest
           activate-environment: fbld
           environment-file: environment.yml
+          python-version: ${{ env.PYTHON_VERSION }}
 
       - name: Show conda installation info
         run: |
