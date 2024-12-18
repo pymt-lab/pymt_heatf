@@ -76,11 +76,11 @@ jobs:
 
       - name: Set the PREFIX environment variable
         run: |
-          echo "PREFIX=$env:MAMBA_ROOT_PREFIX\envs\fbld" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+          echo "PREFIX=$env:MAMBA_ROOT_PREFIX\envs\fbld\Library" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
 
       - name: Set the FC environment variable
         run: |
-          echo "FC=$env:PREFIX\Library\bin\flang.exe" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+          echo "FC=$env:PREFIX\bin\flang.exe" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
 
       - name: View environment variables
         run: |
@@ -88,8 +88,8 @@ jobs:
 
       - name: Configure, build, and install HeatModelF
         run: |
-          cmake ./external/bmi-example-fortran -B $env:BUILD_DIR -LA -G Ninja -DCMAKE_INSTALL_PREFIX=$env:PREFIX -DCMAKE_BUILD_TYPE=Release
-          cmake --build $env:BUILD_DIR --target install --config Release
+          cmake ./external/bmi-example-fortran -B ${{ env.BUILD_DIR }} -LA -G Ninja -DCMAKE_INSTALL_PREFIX=${{ env.PREFIX }} -DCMAKE_BUILD_TYPE=Release
+          cmake --build ${{ env.BUILD_DIR }} --target install --config Release
 
       - name: Build and install package
         run: |
