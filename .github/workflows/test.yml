@@ -59,3 +59,39 @@ jobs:
         run: |
           python heatf_ex.py
           python pymt_heatf_ex.py
+
+  build-test-windows:
+    if:
+      github.event_name == 'push' || github.event.pull_request.head.repo.full_name != github.repository
+
+    runs-on: windows-latest
+
+    defaults:
+      run:
+        shell: pwsh
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ilammy/msvc-dev-cmd@v1
+      - uses: conda-incubator/setup-miniconda@v3
+        with:
+          miniforge-version: latest
+          activate-environment: fbld
+          environment-file: environment.yml
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Show conda installation info
+        run: |
+          conda info
+          conda list
+
+      - name: Build and install HeatModelF
+        run: |
+          pushd ./external/bmi-example-fortran
+          cmake -B ${{ env.BUILD_DIR }} -DCMAKE_INSTALL_PREFIX=$CONDA_PREFIX
+          cmake --build ${{ env.BUILD_DIR }} --target install --config Release
+          popd
+
+      - name: Build and install package
+        run: |
+          make install
