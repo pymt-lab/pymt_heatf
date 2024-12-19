@@ -88,13 +88,21 @@ jobs:
       #   run: |
       #     echo "LINKER=$env:VCToolsInstallDir\bin\Host$env:RUNNER_ARCH\$env:Platform\link.exe" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
 
-      - name: Make a LINK_DIR environment variable for MSVC link.exe
-        run: |
-          echo "LINK_DIR=$env:VCToolsInstallDir\bin\Host$env:RUNNER_ARCH\$env:Platform" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+      # - name: Make a LINK_DIR environment variable for MSVC link.exe
+      #   run: |
+      #     echo "LINK_DIR=$env:VCToolsInstallDir\bin\Host$env:RUNNER_ARCH\$env:Platform" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
 
-      - name: Push location of MSVC link.exe to the front of the path
+      # - name: Push location of MSVC link.exe to the front of the path
+      #   run: |
+      #     echo "Path=$env:LINK_DIR;$env:Path" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+
+      # - name: Force location of MSVC link.exe to the front of the path
+      #   run: |
+      #     echo "$env:VCToolsInstallDir\bin\Host$env:RUNNER_ARCH\$env:Platform" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+
+      - name: Remove link.exe in the Git install
         run: |
-          echo "Path=$env:LINK_DIR;$env:Path" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+          Remove-Item -Path C:\Program Files\Git\usr\bin\link.exe -Force
 
       - name: View environment variables
         run: |
