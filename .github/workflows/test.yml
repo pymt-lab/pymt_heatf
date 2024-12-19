@@ -102,7 +102,7 @@ jobs:
 
       - name: Remove link.exe in the Git install
         run: |
-          Remove-Item -Path C:\Program Files\Git\usr\bin\link.exe -Force
+          Remove-Item -Path "C:\Program Files\Git\usr\bin\link.exe" -Force
 
       - name: View environment variables
         run: |
