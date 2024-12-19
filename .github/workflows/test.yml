@@ -73,6 +73,8 @@ jobs:
         with:
           micromamba-version: latest
           environment-file: environment.yml
+          init-shell: >-
+            powershell
 
       - name: Set the PREFIX environment variable
         run: |
@@ -80,11 +82,11 @@ jobs:
 
       - name: Set the FC environment variable
         run: |
-          echo "FC=$env:PREFIX\bin\flang.exe" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+          echo "FC=$env:PREFIX\bin\flang-new.exe" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
 
-      - name: Make a LINKER environment variable
-        run: |
-          echo "LINKER=$env:VCToolsInstallDir\bin\Host$env:RUNNER_ARCH\$env:Platform\link.exe" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+      # - name: Make a LINKER environment variable
+      #   run: |
+      #     echo "LINKER=$env:VCToolsInstallDir\bin\Host$env:RUNNER_ARCH\$env:Platform\link.exe" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
 
       - name: View environment variables
         run: |
@@ -92,7 +94,7 @@ jobs:
 
       - name: Configure, build, and install HeatModelF
         run: |
-          cmake ./external/bmi-example-fortran -B ${{ env.BUILD_DIR }} -LA -G Ninja -DCMAKE_INSTALL_PREFIX=${{ env.PREFIX }} -DCMAKE_LINKER="${{ env.LINKER }}" -DCMAKE_BUILD_TYPE=Release
+          cmake ./external/bmi-example-fortran -B ${{ env.BUILD_DIR }} -LA -G Ninja -DCMAKE_INSTALL_PREFIX=${{ env.PREFIX }} -DCMAKE_BUILD_TYPE=Release
           cmake --build ${{ env.BUILD_DIR }} --target install --config Release
 
       - name: Build and install package
