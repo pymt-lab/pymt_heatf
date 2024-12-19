@@ -88,6 +88,14 @@ jobs:
       #   run: |
       #     echo "LINKER=$env:VCToolsInstallDir\bin\Host$env:RUNNER_ARCH\$env:Platform\link.exe" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
 
+      - name: Make a LINK_DIR environment variable for MSVC link.exe
+        run: |
+          echo "LINK_DIR=$env:VCToolsInstallDir\bin\Host$env:RUNNER_ARCH\$env:Platform" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+
+      - name: Push location of MSVC link.exe to the front of the path
+        run: |
+          echo "Path=$env:LINK_DIR;$env:Path" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+
       - name: View environment variables
         run: |
           ls env:
