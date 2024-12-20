@@ -41,9 +41,14 @@ jobs:
         run: |
           make install
 
-      - name: Test BMI
+      - name: Test imports
+        working-directory: ${{ github.workspace }}/examples
         run: |
           python -c 'import pymt_heatf'
+          python -c 'from pymt.models import HeatModelF'
+
+      - name: Test BMI
+        run: |
           make test
 
       - name: Run examples
@@ -126,3 +131,19 @@ jobs:
       - name: Build and install package
         run: |
           make install
+
+      - name: Test imports
+        working-directory: ${{ github.workspace }}/examples
+        run: |
+          python -c 'import pymt_heatf'
+          python -c 'from pymt.models import HeatModelF'
+
+      - name: Test BMI
+        run: |
+          make test
+
+      - name: Run examples
+        working-directory: ${{ github.workspace }}/examples
+        run: |
+          python heatf_ex.py
+          python pymt_heatf_ex.py
