@@ -141,7 +141,7 @@ jobs:
       - name: Test BMI
         working-directory: ${{ github.workspace }}
         run: |
-          bmi-test pymt_heatf._bmi:HeatModelF --config-file=${{ github.workspace }}/examples/test.cfg --root-dir=examples -vvv
+          bmi-test pymt_heatf._bmi:HeatModelF --config-file=${{ github.workspace }}\examples\test.cfg --root-dir=${{ github.workspace }}\examples -vvv
 
       - name: Run examples
         working-directory: ${{ github.workspace }}/examples
