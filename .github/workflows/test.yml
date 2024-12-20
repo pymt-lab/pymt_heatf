@@ -139,8 +139,9 @@ jobs:
           python -c 'from pymt.models import HeatModelF'
 
       - name: Test BMI
+        working-directory: ${{ github.workspace }}
         run: |
-          make test
+          bmi-test pymt_heatf._bmi:HeatModelF --config-file=${{ github.workspace }}/examples/test.cfg --root-dir=examples -vvv
 
       - name: Run examples
         working-directory: ${{ github.workspace }}/examples
