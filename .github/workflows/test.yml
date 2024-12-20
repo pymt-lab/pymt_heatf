@@ -58,6 +58,9 @@ jobs:
 
     runs-on: windows-latest
 
+    env:
+      LIBRARY_PREFIX: $env:CONDA_PREFIX\Library
+
     defaults:
       run:
         shell: pwsh
@@ -110,7 +113,7 @@ jobs:
 
       - name: Configure, build, and install HeatModelF
         run: |
-          cmake ./external/bmi-example-fortran -B ${{ env.BUILD_DIR }} -LA -G Ninja -DCMAKE_INSTALL_PREFIX=${{ env.CONDA_PREFIX }} -DCMAKE_BUILD_TYPE=Release
+          cmake ./external/bmi-example-fortran -B ${{ env.BUILD_DIR }} -LA -G Ninja -DCMAKE_INSTALL_PREFIX=${{ env.LIBRARY_PREFIX }} -DCMAKE_BUILD_TYPE=Release
           cmake --build ${{ env.BUILD_DIR }} --target install --config Release
 
       - name: Build and install package
