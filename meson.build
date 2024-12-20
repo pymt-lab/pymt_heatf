@@ -25,10 +25,13 @@ incs = include_directories(
     ]
 )
 
+bmif_dep = dependency('bmif', method: 'pkg-config')
+heatf_dep = dependency('heatf', method: 'pkg-config')
+bmiheatf_dep = dependency('bmiheatf', method: 'pkg-config')
 deps = [
-    fc.find_library('bmif'),
-    fc.find_library('heatf'),
-    fc.find_library('bmiheatf'),
+    bmif_dep,
+    heatf_dep,
+    bmiheatf_dep,
     py.dependency(),
 ]
 
