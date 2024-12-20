@@ -107,9 +107,14 @@ jobs:
         run: |
           Remove-Item -Path "C:\Program Files\Git\usr\bin\link.exe" -Force
 
+      - name: Add conda environment libpath to Windows LIB (not LIBPATH)
+        run: |
+          echo "LIB=$env:LIB;$env:CONDA_PREFIX\Library\lib" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+
       - name: View environment variables
         run: |
           ls env:
+          ls env:LIB
 
       - name: Configure, build, and install HeatModelF
         run: |
