@@ -114,7 +114,7 @@ jobs:
       - name: Configure, build, and install HeatModelF
         run: |
           pushd ./external/bmi-example-fortran 
-          cmake -B ${{ env.BUILD_DIR }} -LA -G Ninja -DCMAKE_INSTALL_PREFIX="${{ env.LIBRARY_PREFIX }}"" -DCMAKE_BUILD_TYPE=Release
+          cmake -B ${{ env.BUILD_DIR }} -LA -G Ninja -DCMAKE_INSTALL_PREFIX="${{ env.LIBRARY_PREFIX }}" -DCMAKE_BUILD_TYPE=Release
           cmake --build ${{ env.BUILD_DIR }} --target install --config Release
           popd
 
