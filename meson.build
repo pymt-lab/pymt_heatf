@@ -1,7 +1,7 @@
 project(
     'pymt_heatf',
     'c', 'cython', 'fortran',
-    version: '3.1.dev0',
+    version: '3.2.dev0',
     license: 'MIT',
 )
 
@@ -25,6 +25,7 @@ incs = include_directories(
     ]
 )
 
+# gfortran on Linux/macOS can find these libraries with fc.find_library(); flang 19 on Windows cannot.
 bmif_dep = dependency('bmif', method: 'pkg-config')
 heatf_dep = dependency('heatf', method: 'pkg-config')
 bmiheatf_dep = dependency('bmiheatf', method: 'pkg-config')
