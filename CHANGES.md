@@ -2,9 +2,7 @@
 
 ## 3.3 (unreleased)
 
-
-- Nothing changed yet.
-
+- Set up a monthly build (#13)
 
 ## 3.2 (2024-12-20)
 
