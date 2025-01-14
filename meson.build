@@ -1,7 +1,6 @@
 project(
     'pymt_heatf',
     'c', 'cython', 'fortran',
-    version: '3.2.dev0',
     license: 'MIT',
 )
 
