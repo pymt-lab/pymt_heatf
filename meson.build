@@ -2,6 +2,9 @@ project(
     'pymt_heatf',
     'c', 'cython', 'fortran',
     license: 'MIT',
+    default_options: [
+        'vsenv=true',
+  ]
 )
 
 py = import('python').find_installation(pure: false)
