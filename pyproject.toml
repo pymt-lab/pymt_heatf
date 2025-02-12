@@ -58,10 +58,10 @@ build = [
 ]
 
 [project.urls]
-homepage = "https://github.com/csdms"
-documentation = "https://github.com/csdms"
-repository = "https://github.com/mdpiper/pymt_heatf"
-changelog = "https://github.com/mdpiper/pymt_heatf/blob/main/CHANGES.rst"
+homepage = "https://csdms.colorado.edu"
+documentation = "https://pymt.readthedocs.io"
+repository = "https://github.com/pymt-lab/pymt_heatf"
+changelog = "https://github.com/pymt-lab/pymt_heatf/blob/main/CHANGES.md"
 
 [project.entry-points."pymt.plugins"]
 HeatModelF = "pymt_heatf._bmi:HeatModelF"
