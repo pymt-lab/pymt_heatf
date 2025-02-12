@@ -18,7 +18,7 @@ numpy_inc = run_command(
 ).stdout().strip()
 incs = include_directories(
     [
-        'pymt_heatf/lib',
+        meson.project_name() / 'lib',
         python_inc,
         numpy_inc,
     ]
@@ -36,31 +36,31 @@ deps = [
 ]
 
 srcs = [
-    'pymt_heatf/lib/bmi_interoperability.f90',
-    'pymt_heatf/lib/heatmodelf.pyx',
+    meson.project_name() / 'lib/bmi_interoperability.f90',
+    meson.project_name() / 'lib/heatmodelf.pyx',
 ]
 
 # Files get copied to <python directory>/site-packages/<subdir>
 install_pkg_srcs = [
-    'pymt_heatf/__init__.py',
-    'pymt_heatf/_bmi.py',
+    meson.project_name() / '__init__.py',
+    meson.project_name() / '_bmi.py',
 ]
 py.install_sources(
     install_pkg_srcs,
-    subdir: 'pymt_heatf',
+    subdir: meson.project_name(),
 )
 install_lib_srcs = [
-    'pymt_heatf/lib/__init__.py',
-    'pymt_heatf/lib/heatmodelf.pyx',
+    meson.project_name() / 'lib/__init__.py',
+    meson.project_name() / 'lib/heatmodelf.pyx',
 ]
 py.install_sources(
     install_lib_srcs,
-    subdir: 'pymt_heatf/lib',
+    subdir: meson.project_name() / 'lib',
 )
 
 install_subdir(
     'meta/HeatModelF',
-    install_dir: py.get_install_dir() / 'pymt_heatf/data',
+    install_dir: py.get_install_dir() / meson.project_name() / 'data',
 )
 
 py.extension_module(
@@ -69,8 +69,8 @@ py.extension_module(
     dependencies: deps,
     include_directories: incs,
     install: true,
-    subdir: 'pymt_heatf/lib',
+    subdir: meson.project_name() / 'lib',
 )
 
 # This is a temporary fix for editable installs.
-run_command('cp', '-r', 'pymt_heatf/data', 'build', check: false)
+run_command('cp', '-r', meson.project_name() / 'data', 'build', check: false)
