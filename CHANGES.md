@@ -2,6 +2,7 @@
 
 ## 3.3 (unreleased)
 
+- Use the project_name function (#15)
 - Set up a monthly build (#13)
 
 ## 3.2 (2024-12-20)
